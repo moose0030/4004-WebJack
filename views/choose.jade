@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  ul
+    each hand in hands
+      p Hand
+      each card in hand.cards
+        p Rank: #{card.rank} Suit:#{card.suit}
+
+  form(method="post", action="/main")
+    ul
+      - for(var n=0; n<hands.length;++n){
+        - for(var i = 0; i < hands[n].cards.length; ++i){
+            if hands[n].cards[i].rank == "Ace"
+              li #{hands[n].cards[i].rank}
+                input(type="radio", name="v"+n + "v" + i, value="1")
+                | One
+                input(type="radio", name="v"+n + "v" + i, value="10")
+                | Ten
+         - }
+      - }
+     button(type="submit") Choose Values

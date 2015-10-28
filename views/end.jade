@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  ul
+    each hand in hands
+      p Hand
+      each card in hand.cards
+        p Rank: #{card.rank} Suit:#{card.suit}
+      p TOTAL: #{hand.total}
+    each h in dealer
+      p Dealer Hand
+      each c in h.cards
+        p Rank: #{c.rank} Suit:#{c.suit}
+      p TOTAL: #{h.total}
+
+  form(method="post", action="/start")
+      button(type="submit") Play Again?

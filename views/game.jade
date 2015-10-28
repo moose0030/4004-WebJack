@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  ul
+    each hand in hands
+      p Hand
+      each card in hand.cards
+        p Rank: #{card.rank} Suit:#{card.suit}
+  ul
+    each h in dealer
+      p Dealer Hand
+      each c in h.cards
+        - if(!c.hidden)
+          p Rank: #{c.rank} Suit:#{c.suit}
+        - else
+          p Hidden Card
+
+  form(method="post", action="/hit")
+      button(type="submit") Hit
+      
+  form(method="post", action="/stay")
+      button(type="submit") Stay
+  

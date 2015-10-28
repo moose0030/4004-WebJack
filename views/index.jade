@@ -1,0 +1,11 @@
+extends layout
+block content
+  h1= title
+  div
+    p Blackjack Game
+    form(method="post", action="/start")
+      div
+        label Player ID
+        input#name(type="text", name="pID")
+      button(type="submit") Join Game
+      
